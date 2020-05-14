@@ -182,32 +182,16 @@ NULL
   i_arg <- substitute(i)
   j_arg <- substitute(j)
 
-  if (missing(i)) {
-    i <- NULL
-    i_arg <- NULL
-  } else if (is.null(i)) {
-    i <- integer()
-  }
+  info <- standardize::collect_subscripts(i, j)
+  i <- info$i
+  j <- info$j
 
-  if (missing(j)) {
-    j <- NULL
-    j_arg <- NULL
-  } else if (is.null(j)) {
-    j <- integer()
-  }
-
-  # Ignore drop as an argument for counting
-  n_real_args <- nargs() - !missing(drop)
-
-  # Column or matrix subsetting if nargs() == 2L
-  if (n_real_args <= 2L) {
+  if (info$transformed) {
     if (!missing(drop)) {
       warn("`drop` argument ignored for subsetting a tibble with `x[j]`, it has an effect only for `x[i, j]`.")
       drop <- FALSE
     }
 
-    j <- i
-    i <- NULL
     j_arg <- i_arg
     i_arg <- NULL
 
@@ -215,6 +199,13 @@ NULL
     if (is.matrix(j)) {
       return(tbl_subset_matrix(x, j, j_arg))
     }
+  }
+
+  if (is.null(i)) {
+    i_arg <- NULL
+  }
+  if (is.null(j)) {
+    j_arg <- NULL
   }
 
   # From here on, i, j and drop contain correct values:

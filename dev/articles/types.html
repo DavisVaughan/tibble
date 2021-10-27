@@ -38,6 +38,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -52,8 +54,8 @@
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="../index.html">tibble</a>
         <div class="info hidden-xs hidden-sm">
-          <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.0.3.9000</span>
+          <span class="partof">part of the <a href="https://tidyverse.org" class="external-link">tidyverse</a></span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.1.6.9000</span>
         </div>
       </div>
     </div>
@@ -76,7 +78,13 @@
       <a href="../articles/types.html">Data types</a>
     </li>
     <li>
-      <a href="../articles/invariants.html">Invariants</a>
+      <a href="../articles/invariants.html">Comparing behavior with data frames</a>
+    </li>
+    <li>
+      <a href="../articles/numbers.html">Controlling display of numbers</a>
+    </li>
+    <li>
+      <a href="../articles/digits.html">Comparing display with data frames</a>
     </li>
   </ul>
 </li>
@@ -89,30 +97,30 @@
   <ul class="dropdown-menu" role="menu">
 <li class="dropdown-header">Release notes</li>
     <li>
-      <a href="https://www.tidyverse.org/blog/2020/04/tibble-3-0-0/">Version 3.0.0</a>
+      <a href="https://www.tidyverse.org/blog/2020/04/tibble-3-0-0/" class="external-link">Version 3.0.0</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2019/03/tibble-2.1.1/">Version 2.1.1</a>
+      <a href="https://www.tidyverse.org/articles/2019/03/tibble-2.1.1/" class="external-link">Version 2.1.1</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2019/01/tibble-2.0.1/">Version 2.0.1</a>
+      <a href="https://www.tidyverse.org/articles/2019/01/tibble-2.0.1/" class="external-link">Version 2.0.1</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2018/11/tibble-2.0.0-pre-announce/">Version 2.0.0 pre-announcement</a>
+      <a href="https://www.tidyverse.org/articles/2018/11/tibble-2.0.0-pre-announce/" class="external-link">Version 2.0.0 pre-announcement</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2018/01/tibble-1-4-2/">Version 1.4.2</a>
+      <a href="https://www.tidyverse.org/articles/2018/01/tibble-1-4-2/" class="external-link">Version 1.4.2</a>
     </li>
     <li>
-      <a href="https://www.tidyverse.org/articles/2018/01/tibble-1-4-1/">Version 1.4.1</a>
+      <a href="https://www.tidyverse.org/articles/2018/01/tibble-1-4-1/" class="external-link">Version 1.4.1</a>
     </li>
     <li>
-      <a href="../news/index.html">Change log</a>
+      <a href="../news/index.html">Changelog</a>
     </li>
   </ul>
 </li>
         <li>
-  <a href="https://github.com/tidyverse/tibble">
+  <a href="https://github.com/tidyverse/tibble" class="external-link">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -139,19 +147,18 @@
       <h1 data-toc-skip>Column data types</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/tidyverse/tibble/blob/master/vignettes/types.Rmd"><code>vignettes/types.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/tidyverse/tibble/blob/HEAD/vignettes/types.Rmd" class="external-link"><code>vignettes/types.Rmd</code></a></small>
       <div class="hidden name"><code>types.Rmd</code></div>
 
     </div>
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://tibble.tidyverse.org">tibble</a></span>)
-</pre></div>
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p>This vignette shows an overview of known data types and their abbreviations, and their origin. For example, <code>&lt;int&gt;</code> in the header of a column indicates an integer column, and <code>&lt;chr&gt;</code> denotes a character column.</p>
 <table class="table">
 <thead><tr class="header">
@@ -194,117 +201,117 @@
 <tr class="even">
 <td align="left"></td>
 <td align="left">raw</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/raw.html">as.raw(1)</a></code></td>
+<td align="left"><code>as.raw(1)</code></td>
 <td align="left">raw</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">list</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/list.html">list(1)</a></code></td>
+<td align="left"><code>list(1)</code></td>
 <td align="left">list</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">named list</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/list.html">list(a = 1)</a></code></td>
+<td align="left"><code>list(a = 1)</code></td>
 <td align="left">named list</td>
 </tr>
 <tr class="odd">
 <td align="left">Built-in objects</td>
 <td align="left">factor</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/factor.html">factor("A")</a></code></td>
+<td align="left"><code>factor("A")</code></td>
 <td align="left">fct</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">ordered</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/factor.html">ordered("a")</a></code></td>
+<td align="left"><code>ordered("a")</code></td>
 <td align="left">ord</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Date</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date()</a></code></td>
+<td align="left"><code><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date()</a></code></td>
 <td align="left">date</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">POSIXt</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time()</a></code></td>
+<td align="left"><code><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time()</a></code></td>
 <td align="left">dttm</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">difftime</td>
-<td align="left"><code><a href="https://vctrs.r-lib.org/reference/new_date.html">vctrs::new_duration(1)</a></code></td>
+<td align="left"><code>vctrs::new_duration(1)</code></td>
 <td align="left">drtn</td>
 </tr>
 <tr class="even">
 <td align="left">Objects from other packages</td>
 <td align="left">hms</td>
-<td align="left"><code><a href="https://hms.tidyverse.org/reference/hms.html">hms::hms(1)</a></code></td>
+<td align="left"><code>hms::hms(1)</code></td>
 <td align="left">time</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">integer64</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/bit64/man/as.integer64.character.html">bit64::as.integer64(1e+10)</a></code></td>
+<td align="left"><code>bit64::as.integer64(1e+10)</code></td>
 <td align="left">int64</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">blob</td>
-<td align="left"><code><a href="https://rdrr.io/pkg/blob/man/blob.html">blob::blob(raw(1))</a></code></td>
+<td align="left"><code>blob::blob(raw(1))</code></td>
 <td align="left">blob</td>
 </tr>
 <tr class="odd">
 <td align="left">Data frames</td>
 <td align="left">data.frame</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/data.frame.html">data.frame(a = 1)</a></code></td>
+<td align="left"><code>data.frame(a = 1)</code></td>
 <td align="left">df[,1]</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">tbl_df</td>
-<td align="left"><code><a href="../reference/tibble.html">tibble(a = 1)</a></code></td>
-<td align="left">tibble</td>
+<td align="left"><code>tibble(a = 1)</code></td>
+<td align="left">tibble[,1]</td>
 </tr>
 <tr class="odd">
 <td align="left">Unchanged</td>
 <td align="left">AsIs</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/AsIs.html">I(1L)</a></code></td>
+<td align="left"><code>I(1L)</code></td>
 <td align="left">I<int></int>
 </td>
 </tr>
 <tr class="even">
 <td align="left">vctrs types</td>
 <td align="left">unspecified</td>
-<td align="left"><code><a href="https://vctrs.r-lib.org/reference/unspecified.html">vctrs::unspecified(1)</a></code></td>
+<td align="left"><code>vctrs::unspecified(1)</code></td>
 <td align="left">???</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">vctrs_list_of</td>
-<td align="left"><code><a href="https://vctrs.r-lib.org/reference/list_of.html">vctrs::list_of(c(1L))</a></code></td>
+<td align="left"><code>vctrs::list_of(c(1L))</code></td>
 <td align="left">list<int></int>
 </td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">vctrs_vctr</td>
-<td align="left"><code><a href="https://vctrs.r-lib.org/reference/new_vctr.html">vctrs::new_vctr(1L)</a></code></td>
+<td align="left"><code>vctrs::new_vctr(1L)</code></td>
 <td align="left">vctrs_vc</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">vctrs_partial_factor</td>
-<td align="left"><code><a href="https://vctrs.r-lib.org/reference/partial_factor.html">vctrs::partial_factor(letters)</a></code></td>
+<td align="left"><code>vctrs::partial_factor(letters)</code></td>
 <td align="left">prtl_fctr</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">vctrs_partial_frame</td>
-<td align="left"><code><a href="https://vctrs.r-lib.org/reference/partial_frame.html">vctrs::partial_frame(a = 1)</a></code></td>
+<td align="left"><code>vctrs::partial_frame(a = 1)</code></td>
 <td align="left">prtl</td>
 </tr>
 <tr class="odd">
@@ -316,64 +323,70 @@
 <tr class="even">
 <td align="left"></td>
 <td align="left">symbol</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/substitute.html">quote(a)</a></code></td>
+<td align="left"><code>quote(a)</code></td>
 <td align="left">sym</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">expression</td>
-<td align="left"><code><a href="https://rdrr.io/r/base/parse.html">parse(text = "a &lt;- 1\nb&lt;- 2")</a></code></td>
+<td align="left"><code>parse(text = "a &lt;- 1\nb&lt;- 2")</code></td>
 <td align="left">expression</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">quosures</td>
-<td align="left"><code><a href="https://rlang.r-lib.org/reference/nse-defuse.html">rlang::quos(a = 1)</a></code></td>
+<td align="left"><code>rlang::quos(a = 1)</code></td>
 <td align="left">quos</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="example-values" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-values" class="anchor"></a>Example values</h2>
+<div class="section level2">
+<h2 id="example-values">Example values<a class="anchor" aria-label="anchor" href="#example-values"></a>
+</h2>
 <p>The following overview contains example values for each type:</p>
-<pre><code>#&gt; Rows: 1
-#&gt; Columns: 23
-#&gt; $ logical       &lt;lgl&gt; TRUE
-#&gt; $ integer       &lt;int&gt; 1
-#&gt; $ double        &lt;dbl&gt; 1.5
-#&gt; $ character     &lt;chr&gt; "A"
-#&gt; $ complex       &lt;cpl&gt; 0+1i
-#&gt; $ raw           &lt;raw&gt; 01
-#&gt; $ list          &lt;list&gt; [1]
-#&gt; $ `named list`  &lt;named list&gt; [1]
-#&gt; $ factor        &lt;fct&gt; A
-#&gt; $ ordered       &lt;ord&gt; a
-#&gt; $ Date          &lt;date&gt; 2020-09-02
-#&gt; $ POSIXt        &lt;dttm&gt; 2020-09-02 12:21:40
-#&gt; $ difftime      &lt;drtn&gt; 1 secs
-#&gt; $ hms           &lt;time&gt; 00:00:01
-#&gt; $ integer64     &lt;int64&gt; 10000000000
-#&gt; $ blob          &lt;blob&gt; [00]
-#&gt; $ data.frame    &lt;df[,1]&gt; &lt;data.frame[1 x 1]&gt;
-#&gt; $ tbl_df        &lt;tibble&gt; &lt;tbl_df[1 x 1]&gt;
-#&gt; $ AsIs          &lt;I&lt;int&gt;&gt; 1
-#&gt; $ unspecified   &lt;???&gt; NA
-#&gt; $ vctrs_list_of &lt;list&lt;int&gt;&gt; [1]
-#&gt; $ vctrs_vctr    &lt;vctrs_vc&gt; 1
-#&gt; $ quosures      &lt;quos&gt; [~1]</code></pre>
+<pre><code><span class="co">#&gt; Rows: 1</span>
+<span class="co">#&gt; Columns: 23</span>
+<span class="co">#&gt; $ logical       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> TRUE</span>
+<span class="co">#&gt; $ integer       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 1</span>
+<span class="co">#&gt; $ double        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.5</span>
+<span class="co">#&gt; $ character     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "A"</span>
+<span class="co">#&gt; $ complex       <span style="color: #949494; font-style: italic;">&lt;cpl&gt;</span> 0+1i</span>
+<span class="co">#&gt; $ raw           <span style="color: #949494; font-style: italic;">&lt;raw&gt;</span> 01</span>
+<span class="co">#&gt; $ list          <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> 1</span>
+<span class="co">#&gt; $ `named list`  <span style="color: #949494; font-style: italic;">&lt;named list&gt;</span> 1</span>
+<span class="co">#&gt; $ factor        <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> A</span>
+<span class="co">#&gt; $ ordered       <span style="color: #949494; font-style: italic;">&lt;ord&gt;</span> a</span>
+<span class="co">#&gt; $ Date          <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2021-10-27</span>
+<span class="co">#&gt; $ POSIXt        <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2021-10-27 16:39:02</span>
+<span class="co">#&gt; $ difftime      <span style="color: #949494; font-style: italic;">&lt;drtn&gt;</span> 1 secs</span>
+<span class="co">#&gt; $ hms           <span style="color: #949494; font-style: italic;">&lt;time&gt;</span> 00:00:01</span>
+<span class="co">#&gt; $ integer64     <span style="color: #949494; font-style: italic;">&lt;int64&gt;</span> 10000000000</span>
+<span class="co">#&gt; $ blob          <span style="color: #949494; font-style: italic;">&lt;blob&gt;</span> 00</span>
+<span class="co">#&gt; $ data.frame    <span style="color: #949494; font-style: italic;">&lt;df[,1]&gt;</span> &lt;data.frame[1 x 1]&gt;</span>
+<span class="co">#&gt; $ tbl_df        <span style="color: #949494; font-style: italic;">&lt;tibble[,1]&gt;</span> &lt;tbl_df[1 x 1]&gt;</span>
+<span class="co">#&gt; $ AsIs          <span style="color: #949494; font-style: italic;">&lt;I&lt;int&gt;&gt;</span> 1</span>
+<span class="co">#&gt; $ unspecified   <span style="color: #949494; font-style: italic;">&lt;???&gt;</span> NA</span>
+<span class="co">#&gt; $ vctrs_list_of <span style="color: #949494; font-style: italic;">&lt;list&lt;int&gt;&gt;</span> 1</span>
+<span class="co">#&gt; $ vctrs_vctr    <span style="color: #949494; font-style: italic;">&lt;vctrs_vc&gt;</span> 1</span>
+<span class="co">#&gt; $ quosures      <span style="color: #949494; font-style: italic;">&lt;quos&gt;</span> &lt;~1&gt;</span></code></pre>
 </div>
-<div id="implementation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#implementation" class="anchor"></a>Implementation</h2>
-<p>The column header is obtained by calling <code><a href="https://rdrr.io/pkg/pillar/man/type_sum.html">pillar::type_sum()</a></code> on the column. This is an S3 method that can be overridden, but most of the time it is more useful to override <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html">vctrs::vec_ptype_abbr()</a></code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">pillar</span>:::<span class="kw">type_sum.default</span>
+<div class="section level2">
+<h2 id="implementation">Implementation<a class="anchor" aria-label="anchor" href="#implementation"></a>
+</h2>
+<p>The column header is obtained by calling <code><a href="https://pillar.r-lib.org/reference/type_sum.html" class="external-link">pillar::type_sum()</a></code> on the column. This is an S3 method that can be overridden, but most of the time it is more useful to override <code><a href="https://vctrs.r-lib.org/reference/vec_ptype_full.html" class="external-link">vctrs::vec_ptype_abbr()</a></code>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">pillar</span><span class="fu">:::</span><span class="va">type_sum.default</span>
 <span class="co">#&gt; function (x) </span>
 <span class="co">#&gt; {</span>
-<span class="co">#&gt;     if (is.object(x) || vctrs::vec_is(x)) </span>
-<span class="co">#&gt;         return(vctrs::vec_ptype_abbr(x))</span>
+<span class="co">#&gt;     pillar_attr &lt;- attr(x, "pillar", exact = TRUE)</span>
+<span class="co">#&gt;     label &lt;- pillar_attr$label</span>
+<span class="co">#&gt;     if (!is.null(label)) {</span>
+<span class="co">#&gt;         return(I(label))</span>
+<span class="co">#&gt;     }</span>
+<span class="co">#&gt;     if (is.object(x) || vctrs::vec_is(x)) {</span>
+<span class="co">#&gt;         return(vec_ptype_abbr(x))</span>
+<span class="co">#&gt;     }</span>
 <span class="co">#&gt;     switch(typeof(x), builtin = , special = , closure = "fn", </span>
 <span class="co">#&gt;         environment = "env", symbol = if (is_missing(x)) {</span>
 <span class="co">#&gt;             "missing"</span>
@@ -381,9 +394,8 @@
 <span class="co">#&gt;             "sym"</span>
 <span class="co">#&gt;         }, typeof(x))</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fc0e4d109e8&gt;</span>
-<span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span>
-</pre></div>
+<span class="co">#&gt; &lt;bytecode: 0x55c54af5b3f8&gt;</span>
+<span class="co">#&gt; &lt;environment: namespace:pillar&gt;</span></code></pre></div>
 </div>
   </div>
 
@@ -398,13 +410,13 @@
 
 
       <footer><div class="tidyverse">
-  <p>tibble is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
+  <p>tibble is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org" class="external-link">tidyverse.org</a>.</p>
 </div>
 
 <div class="author">
   <p>
-    Developed by <a href="http://krlmlr.info">Kirill Müller</a>, <a href="http://hadley.nz">Hadley Wickham</a>.
-    Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
+    Developed by .
+    Site built by <a href="https://pkgdown.r-lib.org" class="external-link">pkgdown</a>.
   </p>
 </div>
 
